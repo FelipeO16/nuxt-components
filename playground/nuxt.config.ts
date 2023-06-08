@@ -1,4 +1,4 @@
 export default defineNuxtConfig({
-  modules: ['../src/module'],
-  myModule: {}
-})
+  modules: ["../src/module", "@nuxtjs/tailwindcss"],
+  css: ["assets/css/tailwind.css"],
+});
