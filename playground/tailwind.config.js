@@ -93,7 +93,19 @@ module.exports = {
             // }
             colors: {
 
-                primary: colors.violet,
+                primary: {
+                    '50': '#fff2fe', 
+                    '100': '#ffe6fc', 
+                    '200': '#ffbff6', 
+                    '300': '#ff99f0', 
+                    '400': '#ff4dde', 
+                    '500': '#ff00c8', 
+                    '600': '#e600ac', 
+                    '700': '#bf0083', 
+                    '800': '#990061', 
+                    '900': '#730041', 
+                    '950': '#4a0025'
+                },
                 muted: colors.slate,
                 info: colors.sky,
                 success: colors.teal,

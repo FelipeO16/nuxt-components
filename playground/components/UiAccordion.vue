@@ -15,7 +15,6 @@
       >
         <details
           v-for="(item, index) in items"
-          :id="index"
           :key="index"
           class="border-muted-200 dark:border-muted-700 border-t"
           :class="{ 'is-active': activeDetails == index }"
@@ -96,43 +95,33 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "UiAccordion",
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-    shape: {
-      type: String,
-      default: undefined,
-      variant: ["rounded", "straight", "curved", undefined],
-    },
-    action: {
-      type: String,
-      default: "dot",
-      variant: ["plus", "dot", "chevron", undefined],
-    },
-  },
-  data() {
-    return {
-      activeDetails: null,
-    };
-  },
-  methods: {
-    handleToggle(detailsId) {
-      if (this.activeDetails == detailsId) {
-        this.activeDetails = null;
+<script setup lang="ts">
+import { ref } from "vue";
 
-        return;
-      }
-      const allDetails = document.querySelectorAll("details");
-      allDetails.forEach((details) => {
-        details.open = false;
-      });
-      this.activeDetails = detailsId;
-    },
-  },
-};
+const props = defineProps<{
+  items: Array<{
+    title: string;
+    content: string;
+  }>;
+  shape?: "rounded" | "straight" | "curved" | undefined;
+  action?: "plus" | "dot" | "chevron" | undefined;
+  exclusive?: boolean;
+}>();
+
+const activeDetails = ref<number | null>(null);
+
+function handleToggle(detailsId: number) {
+  if (activeDetails.value === detailsId) {
+    activeDetails.value = null;
+    return;
+  }
+  if (props.exclusive) {
+    const allDetails = document.querySelectorAll("details");
+    allDetails.forEach((details) => {
+      details.open = false;
+    });
+  }
+
+  activeDetails.value = detailsId;
+}
 </script>

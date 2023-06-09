@@ -61,11 +61,5 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "FirstTest",
-  props: {
-    msg: {
-      type: String,
-      required: true,
-    },
-  },
 });
 </script>
