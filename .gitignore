@@ -1,5 +1,6 @@
 # Dependencies
 node_modules
+sadkiksdfks
 
 # Logs
 *.log*
@@ -34,12 +35,7 @@ coverage
 .nyc_output
 
 # VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.vscode
 
 # Intellij idea
 *.iml
